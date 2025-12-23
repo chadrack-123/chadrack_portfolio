@@ -61,10 +61,10 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-white text-xl">
-              M
+              CK
             </div>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-              Portfolio
+              Chadrack Mulamba
             </span>
           </motion.a>
 
