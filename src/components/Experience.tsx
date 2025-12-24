@@ -13,9 +13,9 @@ const experiences = [
     skills: ["React", "Node.js", "Python", "SQL", "TypeScript", "AWS"],
     detailedInfo: {
       responsibilities: [
-        "Built full-stack applications with React, Python, SQL, and C#, integrating REST APIs and database-driven workflows for submission tracking, peer review, and reporting.",
-        "Automated management and tracking of faculty research publications, streamlining workflows for submission, peer review, and publication processes.",
-        "Collaborated closely with stakeholders to ship features on tight deadlines, contributing to 95% stakeholder satisfaction.",
+        "Built full-stack applications with React, Python, SQL, and C#, integrating REST APIs and database-driven workflows for submission tracking and reporting.",
+        "Automated management and tracking of faculty research publications, streamlining workflows for submission, peer review, and publication processes."
+        
       ],
       achievements: [
         "20% efficiency gain",
@@ -106,7 +106,7 @@ export default function Experience() {
                 className={`relative cursor-pointer ${
                   isFlipped
                     ? "h-[680px] md:h-[520px]"
-                    : "h-[280px] md:h-[250px]"
+                    : "h-[310px] md:h-[280px]"
                 }`}
                 style={{ perspective: "1000px" }}
                 onClick={() => toggleFlip(index)}
