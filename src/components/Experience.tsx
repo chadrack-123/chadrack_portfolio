@@ -106,7 +106,7 @@ export default function Experience() {
                 className={`relative cursor-pointer ${
                   isFlipped
                     ? "h-[680px] md:h-[520px]"
-                    : "h-[310px] md:h-[280px]"
+                    : "h-[340px] md:h-[280px]"
                 }`}
                 style={{ perspective: "1000px" }}
                 onClick={() => toggleFlip(index)}
