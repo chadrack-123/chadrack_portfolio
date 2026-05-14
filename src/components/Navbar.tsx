@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +37,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
+    { name: "About", href: pathname === "/" ? "#about" : "/#about", isExternal: false },
+    { name: "Experience", href: pathname === "/" ? "#experience" : "/#experience", isExternal: false },
+    { name: "Projects", href: pathname === "/" ? "#projects" : "/#projects", isExternal: false },
+    { name: "Skills", href: pathname === "/" ? "#skills" : "/#skills", isExternal: false },
+    { name: "Journey", href: "/journey", isExternal: true },
   ];
 
   return (
@@ -55,7 +59,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.a
-            href="#"
+            href="/"
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -71,12 +75,46 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = link.isExternal 
+                ? pathname === link.href
+                : activeSection === link.href.substring(1);
+              
+              if (link.isExternal) {
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative font-medium transition-colors ${
+                      isActive
+                        ? "text-blue-400"
+                        : "text-gray-300 hover:text-blue-400"
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
+                        initial={false}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                );
+              }
+              
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative text-gray-300 hover:text-blue-400 transition-colors font-medium"
+                  className={`relative font-medium transition-colors ${
+                    isActive
+                      ? "text-blue-400"
+                      : "text-gray-300 hover:text-blue-400"
+                  }`}
                 >
                   {link.name}
                   {isActive && (
@@ -95,7 +133,7 @@ export default function Navbar() {
               );
             })}
             <a
-              href="#contact"
+              href={pathname === "/" ? "#contact" : "/#contact"}
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
                 activeSection === "contact"
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-110"
