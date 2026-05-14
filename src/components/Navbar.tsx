@@ -8,6 +8,7 @@ import Link from "next/link";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -145,22 +146,78 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-gray-300 hover:text-blue-400">
+          <button
+            className="md:hidden text-gray-300 hover:text-blue-400"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
             <svg
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
             </svg>
           </button>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-700 px-4 pb-4 pt-2 flex flex-col space-y-3"
+          >
+            {navLinks.map((link) => {
+              if (link.isExternal) {
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-gray-300 hover:text-blue-400 font-medium py-2"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-gray-300 hover:text-blue-400 font-medium py-2"
+                >
+                  {link.name}
+                </a>
+              );
+            })}
+            <a
+              href={pathname === "/" ? "#contact" : "/#contact"}
+              onClick={() => setMenuOpen(false)}
+              className="px-4 py-2 rounded-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-center"
+            >
+              Contact
+            </a>
+          </motion.div>
+        )}
       </div>
     </motion.nav>
   );
