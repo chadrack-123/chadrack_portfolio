@@ -60,7 +60,7 @@ export default function Hero() {
           >
             Software Developer &
             <br />
-            Data Scientist
+            Data Scientist Test to see
           </motion.h1>
 
           <motion.p
