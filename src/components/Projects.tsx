@@ -37,6 +37,14 @@ const projects = [
     color: "from-indigo-500 to-purple-500",
   },
   {
+    title: "HOPFAN Library – Church Library System",
+    description:
+      "Full-stack library management system for House of Prayer for All Nations. Book cataloguing, member management with auto-generated codes, lending workflows, automatic fines, and email/SMS notifications.",
+    tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "NextAuth", "Nodemailer", "Twilio"],
+    category: "Community Platform",
+    color: "from-teal-500 to-green-500",
+  },
+  {
     title: "Data Pipeline + Analytics (ETL → Dashboard)",
     description:
       "End-to-end pipeline that cleans and models data (ETL) and serves analytics for decision-making with reproducible workflows.",

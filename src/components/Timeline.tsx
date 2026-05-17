@@ -16,6 +16,8 @@ const getCategoryIcon = (category?: string) => {
       return <FaCertificate className="text-purple-400" />;
     case "Contribution":
       return <FaCode className="text-cyan-400" />;
+    case "Project":
+      return <FaCode className="text-indigo-400" />;
     default:
       return <FaCalendar className="text-gray-400" />;
   }
@@ -33,6 +35,8 @@ const getCategoryColor = (category?: string) => {
       return "from-purple-500/20 to-purple-600/20 border-purple-500/30";
     case "Contribution":
       return "from-cyan-500/20 to-cyan-600/20 border-cyan-500/30";
+    case "Project":
+      return "from-indigo-500/20 to-indigo-600/20 border-indigo-500/30";
     default:
       return "from-gray-500/20 to-gray-600/20 border-gray-500/30";
   }

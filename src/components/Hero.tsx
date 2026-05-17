@@ -85,7 +85,7 @@ export default function Hero() {
               View Projects
             </a>
             <a
-              href="/219001710_Mulamba_CV.pdf"
+              href="/CKMulamba_CV_May2026.pdf"
               download
               className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2"
             >
