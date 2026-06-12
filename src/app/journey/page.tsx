@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Timeline from "@/components/Timeline";
+
+export const metadata: Metadata = {
+  title: "Journey | Chadrack Kavula Mulamba",
+  description:
+    "The professional journey of Chadrack Kavula Mulamba — milestones, education, and career progression as a Software Developer and Data Scientist.",
+  alternates: {
+    canonical: "https://portfolio.chadrack.dev/journey",
+  },
+};
 
 export default function JourneyPage() {
   return (

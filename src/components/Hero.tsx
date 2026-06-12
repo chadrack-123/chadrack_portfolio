@@ -53,14 +53,17 @@ export default function Hero() {
           
 
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+            className="font-bold mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Software Developer &
-            <br />
-            Data Scientist
+            <span className="block text-5xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              Chadrack Kavula Mulamba
+            </span>
+            <span className="block text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mt-2">
+              Software Developer &amp; Data Scientist
+            </span>
           </motion.h1>
 
           <motion.p
